@@ -4,14 +4,22 @@ public class EmployeeStatus {
 
 	public static final int isPartTime = 1;
 	public static final int isFullTime = 2;
+	private final String company;
+	private final int empRatePerHr;
+	private final int noOfWorkingDays;
+	private final int maxHourPerMonth;
+	private int totalEmpWage;
 	
-//	public static final int empRatePerHrs = 20;
-//	public static final int maxHrInMonth = 10;
-//
-//	public static final int noOfWorkingDays = 2;
 
-	public static int computeEmpWage(String company, int empRatePerHr, 
-			int noOfWorkingDays, int maxHourPerMonth) {
+	public EmployeeStatus(String company, int empRatePerHr, int noOfWorkingDays, int maxHourPerMonth) {
+		super();
+		this.company = company;
+		this.empRatePerHr = empRatePerHr;
+		this.noOfWorkingDays = noOfWorkingDays;
+		this.maxHourPerMonth = maxHourPerMonth;
+	}
+
+	public void computeEmpWage() {
 		int empHrs = 0;
 		int totalEmpHrs = 0;
 		int totalWorkingDays = 0;
@@ -32,17 +40,22 @@ public class EmployeeStatus {
 			totalEmpHrs += empHrs;
 			System.out.println("Day : " + " " + totalWorkingDays + "Emphrs: " + empHrs);
 		}
-		int totalEmpWage = totalEmpHrs * empRatePerHr;
-		System.out.println("total Emp Wage" + " " + totalEmpWage);
-		return totalEmpWage;
-
+		totalEmpWage = totalEmpHrs * empRatePerHr;
+		
 	}
 	
 
+	@Override
+	public String toString() {
+		return "EmployeeStatus [company=" + company + ", empRatePerHr=" + empRatePerHr + ", noOfWorkingDays="
+				+ noOfWorkingDays + ", maxHourPerMonth=" + maxHourPerMonth + ", totalEmpWage=" + totalEmpWage + "]";
+	}
+
 	public static void main(String[] args) {
-		computeEmpWage("Dmart", 20, 10, 2);
-		computeEmpWage("Reliance", 40, 10, 2);
-		
+		EmployeeStatus dmart = new EmployeeStatus("Dmart", 20, 10, 2);
+		EmployeeStatus reliance = new EmployeeStatus("Reliance", 40, 10, 2);
+		System.out.println(dmart);
+		System.out.println(reliance);
 
 	}
 }

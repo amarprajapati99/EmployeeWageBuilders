@@ -9,13 +9,12 @@ public class EmployeeStatus {
 
 	public static final int noOfWorkingDays = 2;
 
-	public static void main(String[] args) {
-		
+	public static int computeEmpWage() {
 		int empHrs = 0;
 		int totalEmpHrs = 0;
 		int totalWorkingDays = 0;
 
-		while (totalEmpHrs <= maxHrInMonth && totalWorkingDays <= noOfWorkingDays){
+		while (totalEmpHrs <= maxHrInMonth && totalWorkingDays <= noOfWorkingDays) {
 			int empCheck = (int) Math.floor(Math.random() * 10) % 3;
 			switch (empCheck) {
 			case isPartTime:
@@ -27,12 +26,18 @@ public class EmployeeStatus {
 			default:
 				empHrs = 0;
 			}
-			
+
 			totalEmpHrs += empHrs;
 			System.out.println("Day : " + " " + totalWorkingDays + "Emphrs: " + empHrs);
 		}
 		int totalEmpWage = totalEmpHrs * empRatePerHrs;
 		System.out.println("total Emp Wage" + " " + totalEmpWage);
+		return totalEmpWage;
+
+	}
+
+	public static void main(String[] args) {
+		computeEmpWage();
 
 	}
 }
